@@ -20,21 +20,28 @@ so now you do not need to manually change file paths.
 
 print(f"Changelog: {changelog}")
 
-# Full class 1 - https://1drv.ms/u/s!Aq6CKo0noHNiuEYPaIZD5mP90zGM
+# Full class 1:
+#https://1drv.ms/u/s!Aq6CKo0noHNiuEYPaIZD5mP90zGM
 #
-# Full class (gm) :
+# Full class (gm):
 # http://tiny.cc/xany8y
 #
-# Full class 2A :
+# Full class 2A:
 # https://drive.google.com/open?id=1EO_woePO7WlxgnPbzBoVXGLbelekrPZR
 #
-# Full class 2B :
+# Full class 2B:
 # https://drive.google.com/open?id=1pr834BjzA8g4iPpDnJar8XC0dfAIvhHC
 #
-# Full class 3 :
+# Full class 3:
 # https://drive.google.com/open?id=1Re1CkRJ_1iLp4Ej2t8nDyc8GyCG7OrXf
-# 
-# Clips :
+#
+# Full class 4:
+# https://drive.google.com/open?id=1Di31s8v5O6nNNw3vjWJZu5XjtCVlH2iy
+#
+#Full class 5:
+# https://drive.google.com/open?id=1Hxb6pPgrLQtW5U2JLFiX-8SVY0XQs3x8
+#
+# Clips:
 # https://drive.google.com/open?id=1ACR-zfYcIXVQa6G7lfn8k8bdv_L7wOrP
 
 phrases = ["like you say", "like you speak", "like you do",
