@@ -34,7 +34,7 @@ print(f"Changelog: {changelog}")
 # Full class 3 :
 # https://drive.google.com/open?id=1Re1CkRJ_1iLp4Ej2t8nDyc8GyCG7OrXf
 # 
-# link to clips :
+# Clips :
 # https://drive.google.com/open?id=1ACR-zfYcIXVQa6G7lfn8k8bdv_L7wOrP
 
 phrases = ["like you say", "like you speak", "like you do",
@@ -58,11 +58,10 @@ neutral = ["okay, fine?", "decide a date"]
 angry = ["not to trouble you", "i don't want to talk like that"]
 
 # CLIPS
-# ADJUST THE FOLLOWING CODE ACCORDING TO YOUR SYSTEM
 
-loc = os.path.dirname(os.path.abspath('__shani tts__'))
+loc = os.path.dirname(os.path.abspath('__Shani Sir Module__'))
 
-location = loc+'\\clips\\'
+location = loc+'\\Assets\\clips\\'
 
 
 def embarrassing():
@@ -103,8 +102,9 @@ def worksheet():
 
 
 # TEXT TO SPEECH
-# LEARN NATURAL LANGUAGE PROCESSING: http://www.nltk.org/book/ch00.html
-# and: https://textblob.readthedocs.io/en/dev/quickstart.html#create-a-textblob
+# LEARN NATURAL LANGUAGE PROCESSING:
+# http://www.nltk.org/book/ch00.html
+# https://textblob.readthedocs.io/en/dev/quickstart.html#create-a-textblob
 #
 # All parts of speech tags(POS):
 # https://www.ling.upenn.edu/courses/Fall_2003/ling001/penn_treebank_pos.html
