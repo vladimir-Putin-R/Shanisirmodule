@@ -11,12 +11,10 @@ from textblob import TextBlob
 reminder = "ALWAYS REMEMBER: THIS IS TO CELEBRATE THE LEGEND, NOT TO MOCK HIM."
 print(reminder)
 
-changelog = """Version 0.9.2
+changelog = """Version 0.9.3
 
--Dynamically gets file path
-so now you do not need to manually change file paths.
-
--Entire module is now interactive and user friendly."""
+-Major NLP improvements, now the converter can convert most sentences meaningfully.
+-Internal code refactoring."""
 
 print(f"Changelog: {changelog}")
 
