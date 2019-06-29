@@ -127,7 +127,7 @@ def shaniTTS(eng=''):
         elif tag == 'JJ':
             cleaned.insert(index+1, r.choice(adjectives))
 
-        elif (blob.sentiment.polarity < 0 and tag == 'PRP'):  # sentiment tells opinion of string
+        elif (blob.sentiment.polarity < -0.2 and tag == 'PRP'):  # sentiment tells opinion of string
             if 'it is embarrassing to me like basically' not in cleaned:
                 cleaned.extend(('I am', 'so sowry', "i don't want to talk like that", 'it is embarrassing to me like basically'))
 
