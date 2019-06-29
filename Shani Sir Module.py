@@ -45,7 +45,7 @@ phrases = ["like you say", "like you speak", "like you do",
            "hahahahahaha", "tarjit", "jokey", "so sorry",
            "embarrassing", "knocking", "it will be fruitful"]
 
-actualvoice = ["good morning", "so sorry",
+actualvoice = ["good morning", "so sowry",
                "it is embarrassing to me like basically",
                "like you say", "knocking", "like this",
                "not clear", "water", "worksheet"]
@@ -77,8 +77,8 @@ def knocking():
     playsound(f'{location}knocking.mp3')
 
 
-def so_sorry():
-    playsound(f'{location}so sorry.mp3')
+def so_sowry():
+    playsound(f'{location}so sowry.mp3')
 
 
 def good_morning():
@@ -117,7 +117,6 @@ def shaniTTS(eng=''):
     # USING NATURAL LANGUAGE PROCESSING-
 
     blob = TextBlob(eng)
-    print(blob)
 
     cleaned = blob.words  # Returns list with no punctutation marks
 
@@ -132,20 +131,20 @@ def shaniTTS(eng=''):
 
         elif (blob.sentiment.polarity < 0 and tag == 'PRP'):  # sentiment tells opinion of string
             if 'it is embarrassing to me like basically' not in cleaned:
-                cleaned.extend(('I am', 'so sorry', "i don't want to talk like that", 'it is embarrassing to me like basically'))
+                cleaned.extend(('I am', 'so sowry', "i don't want to talk like that", 'it is embarrassing to me like basically'))
 
         elif word[0].isupper and blob.sentiment.polarity > 0.5 and tag == 'PRP':
             if r.choice(happy) != cleaned[-1] and index > 0:
                 cleaned.insert(index, r.choice(happy))
-           
-		elif -0.4 < blob.sentiment.polarity > 0.4 and index == len(cleaned)-1:
-            cleaned.append(r.choice(neutral))
 
         # More parameters to come...
 
     if eng != '':  # If input is passed
         cleaned.insert(r.randint(0, len(cleaned)), '*scratches nose*')
         cleaned.insert(0, 'good morning')
+
+        if -0.4 < blob.sentiment.polarity and blob.sentiment.polarity < 0.4:
+            cleaned.append(r.choice(neutral))
 
     elif eng == '':  # Displays error box when no input is received.
         messagebox.showinfo("Error", "There is nothing to convert, like you say")   
@@ -154,8 +153,6 @@ def shaniTTS(eng=''):
         cleaned.append("*Draws perfect circle*")
 
     shanitext = ' '.join(cleaned)
-
-    print(cleaned)
 
     # VOICE
     shanivoice = pyttsx3.init()
@@ -178,7 +175,6 @@ def shaniTTS(eng=''):
         shanivoice.say(temp)
         shanivoice.runAndWait()
 
-    print(shanitext)
     return shanitext
 
 
@@ -275,7 +271,7 @@ def create_soundboard():
     embarrassingButton = tkinter.Button(soundboard, text="Embarrassing", bg=r.choice(colours), command=embarrassing).grid(row=1, column=1)
     like_you_sayButton = tkinter.Button(soundboard, text="Like you say", bg=r.choice(colours), command=like_you_say).grid(row=1, column=2)
     knockingButton = tkinter.Button(soundboard, text="KNOCKNKNOCKKNCOK", bg=r.choice(colours), command=knocking).grid(row=1, column=3)
-    so_sorryButton = tkinter.Button(soundboard, text="Sorry", bg=r.choice(colours), command=so_sorry).grid(row=1, column=4)
+    so_sorryButton = tkinter.Button(soundboard, text="Sorry", bg=r.choice(colours), command=so_sowry).grid(row=1, column=4)
     good_morningButton = tkinter.Button(soundboard, text="Good morning", bg=r.choice(colours), command=good_morning).grid(row=1, column=5)
     like_thisButton = tkinter.Button(soundboard, text="Like this", bg=r.choice(colours), command=like_this).grid(row=2, column=1)
     not_clearButton = tkinter.Button(soundboard, text="Not clear?", bg=r.choice(colours), command=not_clear).grid(row=2, column=2)
