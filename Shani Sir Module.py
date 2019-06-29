@@ -141,7 +141,7 @@ def shaniTTS(eng=''):
         cleaned.insert(r.randint(0, len(cleaned)), '*scratches nose*')
         cleaned.insert(0, 'good morning')
 
-        if -0.4 < blob.sentiment.polarity and blob.sentiment.polarity < 0.4:
+        if -0.4 < blob.sentiment.polarity and blob.sentiment.polarity < 0.4 and cleaned[-1] != 'it is embarrassing to me like basically':
             cleaned.append(r.choice(neutral))
 
     elif eng == '':  # Displays error box when no input is received.
