@@ -116,43 +116,51 @@ def shaniTTS(eng=''):
 
     # USING NATURAL LANGUAGE PROCESSING-
 
+    candidates = []
+
     blob = TextBlob(eng)
 
-    cleaned = blob.words  # Returns list with no punctutation marks
+    for candidate in range(3): # Prepares 3 candidate outputs (the beginning of the fake machine learning)
 
-    for word, tag in blob.tags:	 # returns list of tuples which tells the POS
-        index = cleaned.index(word)
+        cleaned = blob.words  # Returns list with no punctutation marks
 
-        if tag == 'DT' and word == 'a' or word == 'this':
-            cleaned.insert(index, r.choice(b_determiners))
+        for word, tag in blob.tags:	 # returns list of tuples which tells the POS
+            index = cleaned.index(word)
 
-        elif tag == 'JJ':
-            cleaned.insert(index+1, r.choice(adjectives))
+            if tag == 'DT' and word == 'a' or word == 'this':
+                cleaned.insert(index, r.choice(b_determiners))
 
-        elif (blob.sentiment.polarity < 0 and tag == 'PRP'):  # sentiment tells opinion of string
-            if 'it is embarrassing to me like basically' not in cleaned:
-                cleaned.extend(('I am', 'so sowry', "i don't want to talk like that", 'it is embarrassing to me like basically'))
+            elif tag == 'JJ':
+                cleaned.insert(index+1, r.choice(adjectives))
 
-        elif word[0].isupper and blob.sentiment.polarity > 0.5 and tag == 'PRP':
-            if r.choice(happy) != cleaned[-1] and index > 0:
-                cleaned.insert(index, r.choice(happy))
+            elif (blob.sentiment.polarity < 0 and tag == 'PRP'):  # sentiment tells opinion of string
+                if 'it is embarrassing to me like basically' not in cleaned:
+                    cleaned.extend(('I am', 'so sowry', "i don't want to talk like that", 'it is embarrassing to me like basically'))
 
-        # More parameters to come...
+            elif word[0].isupper and blob.sentiment.polarity > 0.5 and tag == 'PRP':
+                if r.choice(happy) != cleaned[-1] and index > 0:
+                    cleaned.insert(index, r.choice(happy))
 
-    if eng != '':  # If input is passed
-        cleaned.insert(r.randint(0, len(cleaned)), '*scratches nose*')
-        cleaned.insert(0, 'good morning')
+            # More parameters to come...
 
-        if -0.4 < blob.sentiment.polarity and blob.sentiment.polarity < 0.4:
-            cleaned.append(r.choice(neutral))
+        if eng != '':  # If input is passed
+            cleaned.insert(r.randint(0, len(cleaned)), '*scratches nose*')
+            cleaned.insert(0, 'good morning')
 
-    elif eng == '':  # Displays error box when no input is received.
-        messagebox.showinfo("Error", "There is nothing to convert, like you say")   
+            if -0.4 < blob.sentiment.polarity and blob.sentiment.polarity < 0.4:
+                cleaned.append(r.choice(neutral))
 
-    elif len(cleaned) < 3:  # Will run if input is too short
-        cleaned.append("*Draws perfect circle*")
+        elif eng == '':  # Displays error box when no input is received.
+            messagebox.showinfo("Error", "There is nothing to convert, like you say")   
 
-    shanitext = ' '.join(cleaned)
+        elif len(cleaned) < 3:  # Will run if input is too short
+            cleaned.append("*Draws perfect circle*")
+
+        candidates.append(cleaned)
+
+    print(candidates)
+    output = r.choice(candidates)
+    shanitext = ' '.join(output)
 
     # VOICE
     shanivoice = pyttsx3.init()
@@ -161,7 +169,7 @@ def shaniTTS(eng=''):
 
     temp = ''
 
-    for i in cleaned:
+    for i in output:
         if i in actualvoice:
             shanivoice.say(temp)
             shanivoice.runAndWait()
