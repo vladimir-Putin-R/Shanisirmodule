@@ -181,7 +181,7 @@ def randomspeak():
     """Chooses a line from a text file of random sentences
        and converts it to Shani Sir language."""
 
-    file = open("random_sentences.txt", "r")
+    file = open(f"{loc}\\Assets\\random_sentences.txt", "r")
     line = r.choice(file.readlines())
     file.close()
 
