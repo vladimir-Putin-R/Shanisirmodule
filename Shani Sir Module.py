@@ -137,7 +137,9 @@ def shaniTTS(eng=''):
         elif word[0].isupper and blob.sentiment.polarity > 0.5 and tag == 'PRP':
             if r.choice(happy) != cleaned[-1] and index > 0:
                 cleaned.insert(index, r.choice(happy))
-
+           
+		elif -0.4 < blob.sentiment.polarity > 0.4 and index == len(cleaned)-1:
+            cleaned.append(r.choice(neutral))
 
         # More parameters to come...
 
