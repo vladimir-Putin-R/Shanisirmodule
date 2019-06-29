@@ -130,7 +130,7 @@ def shaniTTS(eng=''):
     for candidate in range(3): # Prepares 3 candidate outputs (the beginning of the fake machine learning)
 
         cleaned = blob.words  # Returns list with no punctutation marks
-
+        
         for word, tag in blob.tags:	 # returns list of tuples which tells the POS
             index = cleaned.index(word)
 
@@ -165,7 +165,6 @@ def shaniTTS(eng=''):
 
         candidates.append(cleaned)
 
-    print(candidates)
     output = r.choice(candidates)
     shanitext = ' '.join(output)
 
@@ -292,6 +291,3 @@ def create_soundboard():
     not_clearButton = tkinter.Button(soundboard, text="Not clear?", bg=r.choice(colours), command=not_clear).grid(row=2, column=2)
     waterButton = tkinter.Button(soundboard, text="Water", bg=r.choice(colours), command=water).grid(row=2, column=3)
     worksheetButton = tkinter.Button(soundboard, text="Worksheet", bg=r.choice(colours), command=worksheet).grid(row=2, column=4)
-
-
-create_shaniUI()
